@@ -1,0 +1,16 @@
+@use "utils/globals";
+@use "utils/variables";
+
+header {
+  background-color: red;
+  color: gold;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-logo {
+  cursor: pointer;
+}

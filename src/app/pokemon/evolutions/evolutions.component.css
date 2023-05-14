@@ -1,0 +1,15 @@
+.evolutions-component {
+  text-align: center;
+}
+
+.evolution__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.evolution__image {
+  filter: grayscale(100%);
+}
+.evolution__image--current {
+  filter: grayscale(0%);
+}/*# sourceMappingURL=evolutions.component.css.map */

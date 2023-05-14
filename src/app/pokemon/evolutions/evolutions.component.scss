@@ -1,0 +1,20 @@
+.evolutions-component {
+    text-align: center;
+}
+
+.evolution {
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    &__image {
+        filter: grayscale(100%);
+
+        &--current {
+            filter: grayscale(0%);
+        }
+    }
+}

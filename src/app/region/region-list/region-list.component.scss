@@ -1,0 +1,46 @@
+.region {
+  &__container {
+    padding: 1rem;
+    background-color: #e09393;
+    border-radius: 10px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    margin-top: 1rem;
+    justify-content: space-around;
+    justify-items: center;
+    row-gap: 1.5rem;
+
+    @media only screen and (min-width: 56.25rem) {
+      grid-template-columns: auto auto auto auto;
+      gap: 1.5rem;
+    }
+  }
+
+  &__card {
+    background-color: #9bc388;
+    border-radius: 5px;
+    border: #213816;
+    border-style: solid;
+    box-shadow: 5px 10px 8px #888888;
+    min-height: 3rem;
+    min-width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #213816;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

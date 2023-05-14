@@ -1,0 +1,29 @@
+<div class="rg-pkmn__container">
+  <h1 class="rg-pkmn__title">{{ region.name }} Pokemon</h1>
+
+  <app-loader [isLoading]="!pokemonLoaded" *ngIf="!pokemonLoaded"></app-loader>
+
+  <div class="rg-pkmn__grid" ng-cloak>
+
+    <ng-container *ngIf="pokemonLoaded">
+      <div class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
+        routerLink="/pokemon/{{ p.id }}" *ngFor="let p of pokemon">
+        <div class="rg-pkmn__card-title">
+          <h4>{{ p.name | titlecase }}</h4>
+          <span>#{{ ("000" + p.id).slice(-3) }}</span>
+        </div>
+        <img src="{{ p.sprites.other['official-artwork'].front_default }}" alt="" width="150px"
+          class="rg-pkmn__image" />
+        <span class="rg-pkm__card-desc">Type: <b>{{ p.types[0].type.name | titlecase }}</b></span>
+      </div>
+    </ng-container>
+
+  </div>
+
+  <div class="rg-pkmn__paging">
+    <button (click)="previousPage()" *ngIf="pageIndex > region.startIndex"
+      class="rg-pkmn__paging-btn rg-pkmn__paging-prev">Previous</button>
+    <button (click)="nextPage()" *ngIf="(pageIndex + pageLimit) < region.endIndex"
+      class="rg-pkmn__paging-btn rg-pkmn__paging-next">Next</button>
+  </div>
+</div>

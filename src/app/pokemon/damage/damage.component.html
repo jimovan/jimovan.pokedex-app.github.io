@@ -1,0 +1,21 @@
+<div *ngIf="hasDamageLists" class="damage-types">
+    <h4 class="damage-heading">{{damageTitle}}</h4>
+
+    <div class="damage-table">
+        <div class="damage-column">
+            <h5 class="damage-heading">From</h5>
+            <div class="damage-items">
+                <span class="label type-colour-{{ damage.name }}" *ngFor="let damage of damageFromList">{{damage.name |
+                    titlecase}}</span>
+            </div>
+        </div>
+
+        <div class="damage-column">
+            <h5 class="damage-heading">To</h5>
+            <div class="damage-items">
+                <span class="label type-colour-{{ damage.name }}" *ngFor="let damage of damageToList">{{damage.name |
+                    titlecase}}</span>
+            </div>
+        </div>
+    </div>
+</div>

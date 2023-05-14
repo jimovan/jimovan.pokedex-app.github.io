@@ -1,0 +1,61 @@
+.rg-pkmn__container {
+  padding: 1rem;
+  border-radius: 10px;
+}
+.rg-pkmn__title {
+  text-align: center;
+}
+.rg-pkmn__grid {
+  display: grid;
+  margin-top: 1rem;
+  justify-content: space-around;
+  justify-items: center;
+  row-gap: 1.5rem;
+}
+@media only screen and (min-width: 56.25rem) {
+  .rg-pkmn__grid {
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+    min-height: 46rem;
+    min-width: 38rem;
+  }
+}
+.rg-pkmn__card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 5px;
+  min-height: 3rem;
+  min-width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.rg-pkmn__card-title {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin: 0.25rem;
+  justify-content: space-around;
+}
+.rg-pkmn__paging {
+  margin-top: 0.75rem;
+}
+.rg-pkmn__paging-btn {
+  background-color: #b5b5b5;
+  font-weight: 900;
+  width: 4rem;
+  padding: 0.75rem;
+  border-radius: 0.5em;
+  border: 2px solid #707070;
+  color: rgb(0, 0, 0);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.rg-pkmn__paging-prev {
+  float: left;
+}
+.rg-pkmn__paging-next {
+  float: right;
+}/*# sourceMappingURL=region-pokemon.component.css.map */

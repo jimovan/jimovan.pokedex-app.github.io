@@ -1,0 +1,43 @@
+<app-loader [isLoading]="!hasPokemonLoaded()" *ngIf="!hasPokemonLoaded()"></app-loader>
+
+<div class="pokemon__container type-border-colour-{{ pokemon.types[0].type.name }}" *ngIf="hasPokemonLoaded()">
+
+  <h1 class="pokemon__header">{{ pokemon.name | titlecase}}</h1>
+
+  <div class="pokemon__details">
+    <section class="pokemon__image">
+      <img src="{{ pokemonImage  }}" alt="" width="200px" />
+
+      <div class="pokemon__types">
+        <span class="label type-colour-{{ type.type.name }}" *ngFor="let type of pokemon.types">{{type.type.name |
+          titlecase}}</span>
+      </div>
+
+    </section>
+
+    <section class="pokemon__stats">
+      <ul>
+        <li class="stats"><span>Height:</span><span>{{pokemon.height / 10}} M</span></li>
+        <li class="stats"><span>Weight:</span><span>{{pokemon.weight / 10}} KG</span></li>
+        <li *ngFor="let stat of pokemon.stats" class="stats"><span>{{stat.stat.name |
+            titlecase}}:</span><span>{{stat.base_stat}}</span></li>
+      </ul>
+
+    </section>
+
+    <section class="pokemon__evolution">
+      <app-evolutions [evolutions]="evolutionsList"></app-evolutions>
+    </section>
+
+    <section class="pokemon__damage">
+      <app-damage [damageTitle]="'Double Damage'" [damageFromList]="damageRelations.double_damage_from"
+        [damageToList]="damageRelations.double_damage_to"></app-damage>
+      <br />
+      <app-damage [damageTitle]="'Half Damage'" [damageFromList]="damageRelations.half_damage_from"
+        [damageToList]="damageRelations.half_damage_to"></app-damage>
+      <br />
+      <app-damage [damageTitle]="'No Damage'" [damageFromList]="damageRelations.no_damage_from"
+        [damageToList]="damageRelations.no_damage_to"></app-damage>
+    </section>
+  </div>
+</div>

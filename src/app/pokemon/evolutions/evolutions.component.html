@@ -1,0 +1,10 @@
+<div class="evolutions-component">
+    <h4 class="evolution-heading">Evolution Chain</h4>
+    <div class="evolution__container">
+        <div *ngFor="let evolution of evolutions" routerLink="/pokemon/{{ evolution.Id }}" class="evolution__pokemon">
+            <img src="{{ evolution.Image }}" alt="" width="100px"
+                [ngClass]="evolution.IsCurrentPokemon ? 'evolution__image--current' : 'evolution__image'" />
+            <h5 class="evolution__name">{{evolution.Name | titlecase}}</h5>
+        </div>
+    </div>
+</div>
