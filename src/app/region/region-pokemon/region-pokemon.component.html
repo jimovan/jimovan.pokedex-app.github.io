@@ -3,7 +3,8 @@
 
   <app-loader [isLoading]="!pokemonLoaded" *ngIf="!pokemonLoaded"></app-loader>
 
-  <div class="rg-pkmn__grid" ng-cloak>
+  <div class="rg-pkmn__grid" ng-cloak infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
+    (scrolled)="getPokemon()">
 
     <ng-container *ngIf="pokemonLoaded">
       <div class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
@@ -19,11 +20,4 @@
     </ng-container>
 
   </div>
-
-  <!-- <div class="rg-pkmn__paging">
-    <button (click)="previousPage()" *ngIf="pageIndex > region.startIndex"
-      class="rg-pkmn__paging-btn rg-pkmn__paging-prev">Previous</button>
-    <button (click)="nextPage()" *ngIf="(pageIndex + pageLimit) < region.endIndex"
-      class="rg-pkmn__paging-btn rg-pkmn__paging-next">Next</button>
-  </div> -->
 </div>

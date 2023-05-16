@@ -29,51 +29,46 @@ export class RegionPokemonComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.pokemonService.getRegionById(id).subscribe((region: Region) => {
-      this.region = region;
+      this.region = region;      
+      this.pokemon = [];
       this.pageIndex = this.region.startIndex
 
-      this.getPokemon(this.region.startIndex);
+      this.getPokemon();
       
     });    
   }
 
-  getPokemon(startIndex: number): void {
+  getPokemon(): void {
 
     this.pokemonLoaded = false;
-    this.pokemon = [];
     let pageLimit = this.pageLimit;
 
     if((this.pageIndex + this.pageLimit) > this.region.endIndex) {
-      pageLimit = this.region.endIndex - startIndex;
+      pageLimit = this.region.endIndex - this.pageIndex;
     }
 
     this.pokemonService
-        .getPokemonList(startIndex, pageLimit)
+        .getPokemonList(this.pageIndex, pageLimit)
         .subscribe((response: any) => {
           let pokemonRequest = response.results.map((result: any) => {
             return this.pokemonService.getByUrl(result.url);
           });
 
           forkJoin(pokemonRequest).subscribe((pokemon: any) => {
-            this.pokemon = pokemon;
-            this.sortPokemon();
+            pokemon = this.sortPokemon(pokemon);
+            
+            this.pokemon.push(...pokemon);           
 
-            this.pokemonLoaded = true;   
+            setTimeout(() => {
+              this.pokemonLoaded = true;
+            }, 1000);
+            
+            this.pageIndex += this.pageLimit;
           });
         });
   }
 
-  sortPokemon(): void {
-    this.pokemon.sort((first, second) => first.id - second.id);
-  }
-
-  nextPage(): void {
-    this.pageIndex += this.pageLimit;
-    this.getPokemon(this.pageIndex);
-  }
-
-  previousPage(): void {
-    this.pageIndex -= this.pageLimit;
-    this.getPokemon(this.pageIndex);
+  sortPokemon(pokemon: any[]): any[] {
+    return pokemon.sort((first, second) => first.id - second.id);
   }
 }
