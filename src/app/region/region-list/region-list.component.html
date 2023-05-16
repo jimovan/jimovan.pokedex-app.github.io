@@ -2,12 +2,10 @@
   <h2 class="region__title">Regions</h2>
 
   <div class="region__grid">
-    <div
-      class="region__card"
-      routerLink="/region-pokemon/{{ region.id }}"
-      *ngFor="let region of regions"
-    >
+    <div class="region__card" routerLink="region-pokemon/{{ region.id }}" *ngFor="let region of regions">
       <span>{{ region.name }}</span>
     </div>
   </div>
+
+  <router-outlet></router-outlet>
 </div>

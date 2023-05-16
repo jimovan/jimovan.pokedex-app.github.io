@@ -7,7 +7,7 @@
 
     <ng-container *ngIf="pokemonLoaded">
       <div class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
-        routerLink="/pokemon/{{ p.id }}" *ngFor="let p of pokemon">
+        routerLink="pokemon/{{ p.id }}" *ngFor="let p of pokemon">
         <div class="rg-pkmn__card-title">
           <h4>{{ p.name | titlecase }}</h4>
           <span>#{{ ("000" + p.id).slice(-3) }}</span>
@@ -20,10 +20,10 @@
 
   </div>
 
-  <div class="rg-pkmn__paging">
+  <!-- <div class="rg-pkmn__paging">
     <button (click)="previousPage()" *ngIf="pageIndex > region.startIndex"
       class="rg-pkmn__paging-btn rg-pkmn__paging-prev">Previous</button>
     <button (click)="nextPage()" *ngIf="(pageIndex + pageLimit) < region.endIndex"
       class="rg-pkmn__paging-btn rg-pkmn__paging-next">Next</button>
-  </div>
+  </div> -->
 </div>
