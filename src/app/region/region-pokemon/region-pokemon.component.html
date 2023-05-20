@@ -19,6 +19,6 @@
     </ng-container>
   </div>
 
-  <button class="btn" (click)="getPokemon()" *ngIf="!isLoading">Load More..</button>
+  <button class="btn" (click)="getPokemon()" *ngIf="!allPokemonLoaded && !isLoading">Load More..</button>
   <app-loader *ngIf="isLoading && !isFirstLoad"></app-loader>
 </div>

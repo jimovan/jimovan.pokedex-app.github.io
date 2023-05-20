@@ -12,6 +12,7 @@ import { forkJoin } from 'rxjs';
 export class RegionPokemonComponent implements OnInit {
   isFirstLoad: boolean = true;
   isLoading: boolean = false;
+  allPokemonLoaded: boolean = false;
   pokemon: any[] = [];
   region!: Region;
   pageLimit: number = 80;
@@ -42,34 +43,43 @@ export class RegionPokemonComponent implements OnInit {
     });    
   }
 
+  haveAllPokemonLoaded(): void {
+
+    let diff = Math.abs(this.region.startIndex - this.region.endIndex) + 1;
+    this.allPokemonLoaded = this.pokemon.length == diff;    
+  }
+
   getPokemon(): void {
 
-    this.isLoading = true;
-    let pageLimit = this.pageLimit;
+    if(!this.allPokemonLoaded){
+      this.isLoading = true;
+      let pageLimit = this.pageLimit;
+  
+      if((this.offset + this.pageLimit) > this.region.endIndex) {
+        pageLimit = (this.region.endIndex - this.offset) + 1;
+      }
+  
+      this.pokemonService
+          .getPokemonList(this.offset, pageLimit)
+          .subscribe((response: any) => {
+            let pokemonRequest = response.results.map((result: any) => {
+              return this.pokemonService.getByUrl(result.url);
+            });
+  
+            forkJoin(pokemonRequest).subscribe((pokemon: any) => {
+              pokemon = this.sortPokemon(pokemon);
+  
+              setTimeout(() => {
+                this.isLoading = false;
+                this.offset += this.pageLimit;
+                this.isFirstLoad = false;
 
-    if((this.offset + this.pageLimit) > this.region.endIndex) {
-      pageLimit = this.region.endIndex - this.offset;
-    }
-
-    this.pokemonService
-        .getPokemonList(this.offset, pageLimit)
-        .subscribe((response: any) => {
-          let pokemonRequest = response.results.map((result: any) => {
-            return this.pokemonService.getByUrl(result.url);
+                this.pokemon.push(...pokemon);
+                this.haveAllPokemonLoaded();                
+              }, 2000);
+            });
           });
-
-          forkJoin(pokemonRequest).subscribe((pokemon: any) => {
-            pokemon = this.sortPokemon(pokemon);
-
-            setTimeout(() => {
-              this.isLoading = false;
-              this.offset += this.pageLimit;
-              this.isFirstLoad = false;
-
-              this.pokemon.push(...pokemon);
-            }, 2000);
-          });
-        });
+    }    
   }
 
   sortPokemon(pokemon: any[]): any[] {
