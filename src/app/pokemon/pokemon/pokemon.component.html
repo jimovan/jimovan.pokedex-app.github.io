@@ -1,4 +1,4 @@
-<app-loader [isLoading]="!hasPokemonLoaded()" *ngIf="!hasPokemonLoaded()"></app-loader>
+<app-loader *ngIf="!hasPokemonLoaded()"></app-loader>
 
 <div class="pokemon__container type-border-colour-{{ pokemon.types[0].type.name }}" *ngIf="hasPokemonLoaded()">
 

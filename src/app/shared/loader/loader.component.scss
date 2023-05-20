@@ -2,13 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 45rem;
 }
 
 .pokeball-loader {
     animation: wobble 1.2s infinite linear;
-    height: 200px;
-    width: 200px;
+}
+
+:host.size-large {
+    .size {
+        height: 200px;
+        width: 200px;
+    }
 }
 
 @keyframes wobble {

@@ -1,12 +1,11 @@
 <div class="rg-pkmn__container">
   <h1 class="rg-pkmn__title">{{ region.name }} Pokemon</h1>
 
-  <app-loader [isLoading]="!pokemonLoaded" *ngIf="!pokemonLoaded"></app-loader>
+  <app-loader class="size-large" *ngIf="isFirstLoad"></app-loader>
 
-  <div class="rg-pkmn__grid" ng-cloak infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
-    (scrolled)="getPokemon()">
+  <div class="rg-pkmn__grid">
 
-    <ng-container *ngIf="pokemonLoaded">
+    <ng-container *ngIf="!isFirstLoad">
       <div class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
         routerLink="pokemon/{{ p.id }}" *ngFor="let p of pokemon">
         <div class="rg-pkmn__card-title">
@@ -18,6 +17,8 @@
         <span class="rg-pkm__card-desc">Type: <b>{{ p.types[0].type.name | titlecase }}</b></span>
       </div>
     </ng-container>
-
   </div>
+
+  <button class="btn" (click)="getPokemon()" *ngIf="!isLoading">Load More..</button>
+  <app-loader *ngIf="isLoading && !isFirstLoad"></app-loader>
 </div>
