@@ -10,15 +10,30 @@
   }
 
   &__grid {
-    display: grid;
+
     margin-top: 1rem;
     justify-content: space-around;
     justify-items: center;
-    row-gap: 1.5rem;
+    gap: 1rem;
+    display: none;
 
     @media only screen and (min-width: 56.25rem) {
-      grid-template-columns: auto auto auto auto;
-      gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+    }
+
+    @media only screen and (min-width: 97rem) {
+      display: flex;
+    }
+  }
+
+  &__dropdown {
+    @media only screen and (min-width: 56.25rem) {
+      display: none;
+    }
+
+    select {
+      width: 100%;
     }
   }
 
@@ -29,7 +44,7 @@
     border-style: solid;
     box-shadow: 5px 10px 8px #888888;
     min-height: 3rem;
-    min-width: 10rem;
+    min-width: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;

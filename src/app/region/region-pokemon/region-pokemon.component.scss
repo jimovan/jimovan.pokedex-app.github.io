@@ -14,12 +14,14 @@
     justify-content: space-around;
     justify-items: center;
     row-gap: 1.5rem;
+    gap: 2rem;
 
     @media only screen and (min-width: 56.25rem) {
-      grid-template-columns: auto auto auto;
-      gap: 2rem;
-      min-height: 46rem;
-      min-width: 38rem;
+      grid-template-columns: repeat(3, auto);
+    }
+
+    @media only screen and (min-width: 97rem) {
+      grid-template-columns: repeat(6, auto);
     }
   }
 

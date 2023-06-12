@@ -3,8 +3,16 @@
 
   <div class="region__grid">
     <div class="region__card" routerLink="region-pokemon/{{ region.id }}" *ngFor="let region of regions">
-      <span>{{ region.name }}</span>
+      <p>{{ region.name }}</p>
     </div>
+  </div>
+
+  <div class="region__dropdown">
+    <select (change)="onSelectedRegion()" [(ngModel)]="selectedRegionId">
+      <option *ngFor="let region of regions" [value]="region.id">
+        {{region.name}}
+      </option>
+    </select>
   </div>
 
   <router-outlet></router-outlet>
