@@ -11,6 +11,6 @@
 @media only screen and (min-width: 56.25rem) {
   .container {
     flex-direction: row;
-    max-width: 75rem;
+    max-width: 90rem;
   }
 }/*# sourceMappingURL=app.component.css.map */

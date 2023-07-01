@@ -1,6 +1,12 @@
 @use "utils/globals";
 @use "utils/variables";
 
+@media only screen and (max-width: 56.25rem) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
 header {
   background-color: red;
   color: gold;

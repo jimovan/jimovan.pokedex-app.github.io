@@ -2,29 +2,47 @@
   padding: 1rem;
   border-radius: 10px;
 }
+
 .rg-pkmn__title {
   text-align: center;
 }
+
 .rg-pkmn__grid {
   display: grid;
   margin-top: 1rem;
   justify-content: space-around;
   justify-items: center;
-  row-gap: 1.5rem;
+  gap: 2rem;
 }
+
 @media only screen and (min-width: 56.25rem) {
   .rg-pkmn__grid {
-    grid-template-columns: auto auto auto;
-    gap: 2rem;
-    min-height: 46rem;
-    min-width: 38rem;
+    grid-template-columns: repeat(3, auto);
   }
 }
+
+@media only screen and (min-width: 97rem) {
+  .rg-pkmn__grid {
+    grid-template-columns: repeat(6, auto);
+  }
+}
+
+@media only screen and (max-width: 56.25rem) {
+  .rg-pkmn__grid {
+    flex-direction: row;
+    width: 100%;
+    justify-content: normal;
+    gap: 1rem;
+  }
+
+  .rg-pkmn__grid-image {
+    width: 50px;
+  }
+}
+
 .rg-pkmn__card {
-  display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  border-radius: 5px;
   min-height: 3rem;
   min-width: 10rem;
   display: flex;
@@ -32,17 +50,35 @@
   align-items: center;
   cursor: pointer;
 }
-.rg-pkmn__card-title {
-  display: flex;
+
+.rg-pkmn__card-name {
+  display: grid;
   width: 100%;
-  flex-direction: row;
   margin: 0.25rem;
   justify-content: space-around;
 }
-.rg-pkmn__paging {
-  margin-top: 0.75rem;
+
+.rg-pkmn__card-image {
+  width: 150px;
 }
-.rg-pkmn__paging-btn {
+
+@media only screen and (max-width: 56.25rem) {
+  .rg-pkmn__card {
+    flex-direction: row-reverse;
+    width: 100%;
+    border-radius: 50px;
+  }
+
+  .rg-pkmn__card-name {
+    justify-content: space-between;
+  }
+
+  .rg-pkmn__card-image {
+    width: 50px;
+  }
+}
+
+.rg-pkmn__btn {
   background-color: #b5b5b5;
   font-weight: 900;
   width: 4rem;
@@ -53,9 +89,5 @@
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
-.rg-pkmn__paging-prev {
-  float: left;
-}
-.rg-pkmn__paging-next {
-  float: right;
-}/*# sourceMappingURL=region-pokemon.component.css.map */
+
+/*# sourceMappingURL=region-pokemon.component.css.map */

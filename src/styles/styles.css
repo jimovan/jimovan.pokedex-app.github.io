@@ -188,6 +188,11 @@ h3 {
   border: 5px solid #8c8c8c;
 }
 
+@media only screen and (max-width: 56.25rem) {
+  .hidden-mobile {
+    display: none;
+  }
+}
 header {
   background-color: red;
   color: gold;

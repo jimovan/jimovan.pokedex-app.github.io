@@ -8,17 +8,16 @@
     <ng-container *ngIf="!isFirstLoad">
       <div class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
         routerLink="pokemon/{{ p.id }}" *ngFor="let p of pokemon">
-        <div class="rg-pkmn__card-title">
-          <h4>{{ p.name | titlecase }}</h4>
+        <div class="rg-pkmn__card-name">
           <span>#{{ ("000" + p.id).slice(-3) }}</span>
+          <h3>{{ p.name | titlecase }}</h3>
         </div>
-        <img src="{{ p.sprites.other['official-artwork'].front_default }}" alt="" width="150px"
-          class="rg-pkmn__image" />
-        <span class="rg-pkm__card-desc">Type: <b>{{ p.types[0].type.name | titlecase }}</b></span>
+        <img src="{{ p.sprites.other['official-artwork'].front_default }}" alt="" class="rg-pkmn__card-image" />
+        <span class="rg-pkm__card-desc hidden-mobile"><b>{{ p.types[0].type.name | titlecase }}</b></span>
       </div>
     </ng-container>
   </div>
 
-  <button class="btn" (click)="getPokemon()" *ngIf="!allPokemonLoaded && !isLoading">Load More..</button>
+  <button class="rg-pkmn__btn" (click)="getPokemon()" *ngIf="!allPokemonLoaded && !isLoading">Load More..</button>
   <app-loader *ngIf="isLoading && !isFirstLoad"></app-loader>
 </div>

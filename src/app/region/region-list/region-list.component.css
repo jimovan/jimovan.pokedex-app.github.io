@@ -7,17 +7,30 @@
   text-align: center;
 }
 .region__grid {
-  display: grid;
   margin-top: 1rem;
   justify-content: space-around;
   justify-items: center;
-  row-gap: 1.5rem;
+  gap: 1rem;
+  display: none;
 }
 @media only screen and (min-width: 56.25rem) {
   .region__grid {
-    grid-template-columns: auto auto auto auto;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
   }
+}
+@media only screen and (min-width: 97rem) {
+  .region__grid {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 56.25rem) {
+  .region__dropdown {
+    display: none;
+  }
+}
+.region__dropdown select {
+  width: 100%;
 }
 .region__card {
   background-color: #9bc388;
@@ -26,7 +39,7 @@
   border-style: solid;
   box-shadow: 5px 10px 8px #888888;
   min-height: 3rem;
-  min-width: 10rem;
+  min-width: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
